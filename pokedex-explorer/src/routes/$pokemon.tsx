@@ -38,6 +38,7 @@ function RouteComponent() {
                 {typeInfo.type.name}
               </span>
             ))} </div>
+            <div className="text-black">Pokedex Entry: {data.id}</div>
              <div className="text-black">Weight: {data.weight/100} kg</div>
              <div className="text-black">Weight: {data.height/10} m</div>
         </div>

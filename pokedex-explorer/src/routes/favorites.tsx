@@ -1,9 +1,9 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from "@tanstack/react-router";
 
-export const Route = createFileRoute('/favorites')({
+export const Route = createFileRoute("/favorites")({
   component: Favorites,
-})
+});
 
 function Favorites() {
-  return <div>Hello "/favorites"!</div>
+  return <div className="bg-[#f1d5ce]">Hello "/favorites"!</div>;
 }
