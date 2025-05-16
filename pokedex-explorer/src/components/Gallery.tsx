@@ -5,7 +5,9 @@ function Gallery() {
   const { data, isPending, error } = useQuery({
     queryKey: ["pokemon"],
     queryFn: async () => {
-      const res = await fetch(`https://pokeapi.co/api/v2/pokemon/`);
+      const res = await fetch(
+        `https://pokeapi.co/api/v2/pokemon//?offset=0&limit=151`
+      );
       if (!res.ok) throw new Error("Network response was not ok");
       return res.json();
     },
@@ -16,8 +18,8 @@ function Gallery() {
     <>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 m-20">
         {data.results.map((pokemon: { name: string }) => (
-        <PokemonCard key={pokemon.name} name={pokemon.name} />
-      ))}
+          <PokemonCard key={pokemon.name} name={pokemon.name} />
+        ))}
       </div>
     </>
   );

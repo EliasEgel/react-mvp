@@ -11,10 +11,17 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
+import { Route as FavoritesImport } from './routes/favorites'
 import { Route as PokemonImport } from './routes/$pokemon'
 import { Route as IndexImport } from './routes/index'
 
 // Create/Update Routes
+
+const FavoritesRoute = FavoritesImport.update({
+  id: '/favorites',
+  path: '/favorites',
+  getParentRoute: () => rootRoute,
+} as any)
 
 const PokemonRoute = PokemonImport.update({
   id: '/$pokemon',
@@ -46,6 +53,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PokemonImport
       parentRoute: typeof rootRoute
     }
+    '/favorites': {
+      id: '/favorites'
+      path: '/favorites'
+      fullPath: '/favorites'
+      preLoaderRoute: typeof FavoritesImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -54,36 +68,41 @@ declare module '@tanstack/react-router' {
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/$pokemon': typeof PokemonRoute
+  '/favorites': typeof FavoritesRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/$pokemon': typeof PokemonRoute
+  '/favorites': typeof FavoritesRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
   '/$pokemon': typeof PokemonRoute
+  '/favorites': typeof FavoritesRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/$pokemon'
+  fullPaths: '/' | '/$pokemon' | '/favorites'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/$pokemon'
-  id: '__root__' | '/' | '/$pokemon'
+  to: '/' | '/$pokemon' | '/favorites'
+  id: '__root__' | '/' | '/$pokemon' | '/favorites'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   PokemonRoute: typeof PokemonRoute
+  FavoritesRoute: typeof FavoritesRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   PokemonRoute: PokemonRoute,
+  FavoritesRoute: FavoritesRoute,
 }
 
 export const routeTree = rootRoute
@@ -97,7 +116,8 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/$pokemon"
+        "/$pokemon",
+        "/favorites"
       ]
     },
     "/": {
@@ -105,6 +125,9 @@ export const routeTree = rootRoute
     },
     "/$pokemon": {
       "filePath": "$pokemon.tsx"
+    },
+    "/favorites": {
+      "filePath": "favorites.tsx"
     }
   }
 }

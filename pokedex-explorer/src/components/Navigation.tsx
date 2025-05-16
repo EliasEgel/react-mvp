@@ -41,7 +41,7 @@ function Navigation() {
               className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-[#c85250] text-white rounded-box w-52"
             >
               <li>
-                <a>Favorites</a>
+                <Link to="/favorites">Favorites</Link>
               </li>
               <li>
                 <a>About</a>
@@ -59,9 +59,9 @@ function Navigation() {
             <li className="hover:bg-[#c85250] rounded-lg">
               <a>Favorites</a>
             </li>
-            <li className="hover:bg-[#c85250] rounded-lg">
+            <Link to="/favorites" className="hover:bg-[#c85250] rounded-lg">
               <a>About</a>
-            </li>
+            </Link>
             <li className="hover:bg-[#c85250] rounded-lg">
               <a href="https://github.com/EliasEgel/react-mvp">Github</a>
             </li>
