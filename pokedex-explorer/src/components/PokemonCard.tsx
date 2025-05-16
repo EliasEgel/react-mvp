@@ -18,7 +18,7 @@ const PokemonCard = ({ name }: PokemonCardProps) => {
   
 
   return (
-    <div className="group relative w-48 h-56 rounded-lg border border-neutral-200 overflow-hidden cursor-pointer transition bg-white hover:bg-yellow-200 shadow-md hover:shadow-lg">
+    <div className="group relative w-48 h-56 rounded-lg border border-neutral-200 overflow-hidden cursor-pointer transition bg-[#f7bec0] hover:bg-yellow-200 shadow-md hover:shadow-lg">
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full p-4">
         {isPending && <p className="text-sm text-gray-500">Loading...</p>}
