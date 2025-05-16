@@ -12,6 +12,16 @@ function RouteComponent() {
 
   if (isPending) return <p>Loading...</p>;
   if (error) return <p>Error: {(error as Error).message}</p>;
+  const handleSave = () => {
+    const saved = JSON.parse(localStorage.getItem("savedPokemon") || "[]");
+    if (!saved.includes(data.name)) {
+      const updated = [...saved, data.name];
+      localStorage.setItem("savedPokemon", JSON.stringify(updated));
+      alert(`${data.name} saved!`);
+    } else {
+      alert(`${data.name} is already saved.`);
+    }
+  };
 
   return (
     <div className="flex flex-col items-center gap-4 px-4 py-8 text-center bg-[#f1d5ce]">
@@ -19,7 +29,7 @@ function RouteComponent() {
       <h1 className="capitalize text-3xl font-bold text-[#c85250]">
         {data.name}
       </h1>
-
+    
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 m-20">
         <div>
           <img
@@ -41,6 +51,12 @@ function RouteComponent() {
             <div className="text-black">Pokedex Entry: {data.id}</div>
              <div className="text-black">Weight: {data.weight/100} kg</div>
              <div className="text-black">Weight: {data.height/10} m</div>
+             <button
+        onClick={handleSave}
+        className="bg-[#c85250] text-white px-4 py-2 rounded hover:bg-[#a5443e] transition"
+      >
+        Favorite
+      </button>
         </div>
        
         <div className="w-full md:col-span-2 mt-6 px-4">
