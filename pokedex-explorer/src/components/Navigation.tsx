@@ -3,12 +3,12 @@ import { Link } from "@tanstack/react-router";
 function Navigation() {
   return (
     <>
-      <div className="navbar bg-red-600 text-white shadow-md px-4 sticky top-0 z-50">
+      <div className="navbar text-white shadow-md px-4 sticky top-0 z-50 bg-[#c85250]">
         {/* Left: Logo/Brand */}
         <div className="flex-1">
           <Link
             to="/"
-            className="btn btn-ghost text-xl text-white hover:bg-red-700"
+            className="btn btn-ghost text-xl text-white hover:bg-[#e7625f]"
           >
             PokeDex
           </Link>
@@ -47,9 +47,7 @@ function Navigation() {
                 <a>About</a>
               </li>
               <li>
-                <a href="https://github.com/EliasEgel/react-mvp">
-                  Github
-                </a>
+                <a href="https://github.com/EliasEgel/react-mvp">Github</a>
               </li>
             </ul>
           </div>
@@ -65,9 +63,7 @@ function Navigation() {
               <a>About</a>
             </li>
             <li className="hover:bg-red-700">
-              <a href="https://github.com/EliasEgel/react-mvp">
-                Github
-              </a>
+              <a href="https://github.com/EliasEgel/react-mvp">Github</a>
             </li>
           </ul>
         </div>
