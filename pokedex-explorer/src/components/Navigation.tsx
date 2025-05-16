@@ -41,13 +41,15 @@ function Navigation() {
               className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-red-500 text-white rounded-box w-52"
             >
               <li>
-                <Link to="/">Home</Link>
-              </li>
-              <li>
                 <a>Favorites</a>
               </li>
               <li>
                 <a>About</a>
+              </li>
+              <li>
+                <a href="https://github.com/EliasEgel/react-mvp">
+                  Github
+                </a>
               </li>
             </ul>
           </div>
@@ -57,13 +59,15 @@ function Navigation() {
         <div className="hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
             <li className="hover:bg-red-700">
-              <a>Home</a>
-            </li>
-            <li className="hover:bg-red-700">
               <a>Favorites</a>
             </li>
             <li className="hover:bg-red-700">
               <a>About</a>
+            </li>
+            <li className="hover:bg-red-700">
+              <a href="https://github.com/EliasEgel/react-mvp">
+                Github
+              </a>
             </li>
           </ul>
         </div>
