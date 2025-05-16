@@ -57,11 +57,14 @@ function Navigation() {
         <div className="hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
             <li className="hover:bg-[#c85250] rounded-lg">
-              <a>Favorites</a>
+              <Link to="/favorites">
+                <a>Favorites</a>
+              </Link>
             </li>
-            <Link to="/favorites" className="hover:bg-[#c85250] rounded-lg">
+            <li className="hover:bg-[#c85250] rounded-lg">
               <a>About</a>
-            </Link>
+            </li>
+
             <li className="hover:bg-[#c85250] rounded-lg">
               <a href="https://github.com/EliasEgel/react-mvp">Github</a>
             </li>
