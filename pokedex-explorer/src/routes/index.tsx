@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
-import PokemonCard from '../components/PokemonCard'
+import Gallery from '../components/Gallery'
 
 export const Route = createFileRoute('/')({
   component: Index,
@@ -8,7 +8,7 @@ export const Route = createFileRoute('/')({
 function Index() {
   return (
     <div className="p-2">
-      <PokemonCard name ="Bulbasaur" />
+        <Gallery />
     </div>
   )
 }
