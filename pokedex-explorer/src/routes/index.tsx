@@ -7,7 +7,7 @@ export const Route = createFileRoute('/')({
 
 function Index() {
   return (
-    <div className="p-2">
+    <div className="p-2 bg-yellow-100">
         <Gallery />
     </div>
   )
