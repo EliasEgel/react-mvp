@@ -3,12 +3,12 @@ import { Link } from "@tanstack/react-router";
 function Navigation() {
   return (
     <>
-      <div className="navbar text-white shadow-md px-4 sticky top-0 z-50 bg-[#c85250]">
+      <div className="navbar text-white shadow-md px-4 sticky top-0 z-50 bg-[#e7625f]">
         {/* Left: Logo/Brand */}
         <div className="flex-1">
           <Link
             to="/"
-            className="btn btn-ghost text-xl text-white hover:bg-[#e7625f]"
+            className="btn btn-ghost text-xl text-white hover:bg-[#c85250]"
           >
             PokeDex
           </Link>
@@ -19,7 +19,7 @@ function Navigation() {
           <div className="dropdown dropdown-end">
             <label
               tabIndex={0}
-              className="btn btn-ghost text-white hover:bg-red-700"
+              className="btn btn-ghost text-white hover:bg-[#c85250]"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -38,7 +38,7 @@ function Navigation() {
             </label>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-red-500 text-white rounded-box w-52"
+              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-[#c85250] text-white rounded-box w-52"
             >
               <li>
                 <a>Favorites</a>
@@ -56,13 +56,13 @@ function Navigation() {
         {/* Right: Menu for desktop */}
         <div className="hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
-            <li className="hover:bg-red-700">
+            <li className="hover:bg-[#c85250] rounded-lg">
               <a>Favorites</a>
             </li>
-            <li className="hover:bg-red-700">
+            <li className="hover:bg-[#c85250] rounded-lg">
               <a>About</a>
             </li>
-            <li className="hover:bg-red-700">
+            <li className="hover:bg-[#c85250] rounded-lg">
               <a href="https://github.com/EliasEgel/react-mvp">Github</a>
             </li>
           </ul>

@@ -18,7 +18,7 @@ const PokemonCard = ({ name }: PokemonCardProps) => {
   
 
   return (
-    <div className="group relative w-48 h-56 rounded-lg border border-neutral-200 overflow-hidden cursor-pointer transition bg-[#f7bec0] hover:bg-yellow-200 shadow-md hover:shadow-lg">
+    <div className="group relative w-48 h-56 rounded-lg border border-neutral-200 overflow-hidden cursor-pointer transition bg-[#f7bec0] hover:bg-[#e7625f] shadow-md hover:shadow-lg">
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full p-4">
         {isPending && <p className="text-sm text-gray-500">Loading...</p>}
@@ -38,11 +38,11 @@ const PokemonCard = ({ name }: PokemonCardProps) => {
 
       {/* Hover Types Overlay */}
       {data && (
-        <div className="absolute bottom-0 left-0 right-0 z-20 flex justify-center gap-2 py-2 bg-yellow-300/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        <div className="absolute bottom-0 left-0 right-0 z-20 flex justify-center gap-2 py-2 bg-[#c85250] opacity-0 group-hover:opacity-100 transition-opacity duration-300">
           {data.types.map((typeInfo: any) => (
             <span
               key={typeInfo.slot}
-              className="px-2 py-1 text-xs font-medium text-white bg-gray-700 rounded-full capitalize"
+              className="px-2 py-1 text-xs font-medium text-black bg-[#f1d5ce] rounded-full capitalize"
             >
               {typeInfo.type.name}
             </span>
