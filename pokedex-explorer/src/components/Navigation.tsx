@@ -3,7 +3,7 @@ import { Link } from "@tanstack/react-router";
 function Navigation() {
   return (
     <>
-      <div className="navbar bg-red-600 text-white shadow-md px-4">
+      <div className="navbar bg-red-600 text-white shadow-md px-4 sticky top-0 z-50">
         {/* Left: Logo/Brand */}
         <div className="flex-1">
           <Link
