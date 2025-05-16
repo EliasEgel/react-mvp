@@ -1,9 +1,10 @@
-import { createFileRoute } from '@tanstack/react-router'
-import { usePokemon } from '../components/usePokemon';
+import { createFileRoute } from "@tanstack/react-router";
+import { usePokemon } from "../components/usePokemon";
+import StatBar from "../components/StatBar";
 
-export const Route = createFileRoute('/$pokemon')({
+export const Route = createFileRoute("/$pokemon")({
   component: RouteComponent,
-})
+});
 
 function RouteComponent() {
   const { pokemon } = Route.useParams();
@@ -16,7 +17,13 @@ function RouteComponent() {
     <div>
       <h1 className="capitalize text-3xl font-bold">{data.name}</h1>
       <img src={data.sprites.front_default} alt={data.name} />
-      {/* Additional details */}
+      {data.stats.map((s: any) => (
+        <StatBar
+          key={s.stat.name}
+          statName={s.stat.name}
+          baseStat={s.base_stat}
+        />
+      ))}
     </div>
   );
 }
