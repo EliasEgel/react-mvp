@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { usePokemon } from "./usePokemon";
+import { usePokemon } from "../hooks/usePokemon";
 
 type PokemonCardProps = {
   name: string;

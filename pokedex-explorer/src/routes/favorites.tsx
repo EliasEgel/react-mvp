@@ -13,9 +13,15 @@ function Favorites() {
         your Favorites
       </h1>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 m-20">
-        {favorites.map((pokemon) => (
-          <PokemonCard key={pokemon} name={pokemon} />
-        ))}
+        {favorites.length === 0 ? (
+          <p className="text-center col-span-full text-gray-500">
+            No favorites yet.
+          </p>
+        ) : (
+          favorites.map((pokemon) => (
+            <PokemonCard key={pokemon} name={pokemon} />
+          ))
+        )}
       </div>
     </div>
   );

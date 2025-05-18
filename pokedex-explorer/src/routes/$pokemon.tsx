@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { usePokemon } from "../components/usePokemon";
+import { usePokemon } from "../hooks/usePokemon";
 import StatBar from "../components/StatBar";
 
 export const Route = createFileRoute("/$pokemon")({
@@ -29,7 +29,7 @@ function RouteComponent() {
       <h1 className="capitalize text-3xl font-bold text-[#c85250]">
         {data.name}
       </h1>
-    
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 m-20">
         <div>
           <img
@@ -40,25 +40,28 @@ function RouteComponent() {
         </div>
         <div>
           <h2 className="text-xl font-semibold mb-4 text-[#c85250]">Data</h2>
-          <div className="text-black">Types:{data.types.map((typeInfo: any) => (
+          <div className="text-black">
+            Types:
+            {data.types.map((typeInfo: any) => (
               <span
                 key={typeInfo.type.name}
                 className="px-3 py-1 bg-[#ffffff] text-[#c85250] text-sm font-medium rounded-full capitalize"
               >
                 {typeInfo.type.name}
               </span>
-            ))} </div>
-            <div className="text-black">Pokedex Entry: {data.id}</div>
-             <div className="text-black">Weight: {data.weight/100} kg</div>
-             <div className="text-black">Weight: {data.height/10} m</div>
-             <button
-        onClick={handleSave}
-        className="bg-[#c85250] text-white px-4 py-2 rounded hover:bg-[#a5443e] transition"
-      >
-        Favorite
-      </button>
+            ))}{" "}
+          </div>
+          <div className="text-black">Pokedex Entry: {data.id}</div>
+          <div className="text-black">Weight: {data.weight / 100} kg</div>
+          <div className="text-black">Weight: {data.height / 10} m</div>
+          <button
+            onClick={handleSave}
+            className="bg-[#c85250] text-white px-4 py-2 rounded hover:bg-[#a5443e] transition"
+          >
+            Favorite
+          </button>
         </div>
-       
+
         <div className="w-full md:col-span-2 mt-6 px-4">
           <h2 className="text-xl font-semibold mb-4 text-[#c85250]">Stats</h2>
           {data.stats.map((s: any) => (
