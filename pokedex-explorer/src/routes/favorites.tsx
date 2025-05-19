@@ -8,6 +8,9 @@ export const Route = createFileRoute("/favorites")({
 
 function Favorites() {
   const [favorites, setFavorites] = useState<string[]>([]);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   useEffect(() => {
     const saved = JSON.parse(localStorage.getItem("savedPokemon") || "[]");
