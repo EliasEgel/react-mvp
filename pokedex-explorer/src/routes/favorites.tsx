@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import PokemonCard from "../components/PokemonCard";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const Route = createFileRoute("/favorites")({
   component: Favorites,
@@ -21,6 +23,7 @@ function Favorites() {
     const updated = favorites.filter((fav) => fav !== name);
     setFavorites(updated);
     localStorage.setItem("savedPokemon", JSON.stringify(updated));
+    toast.success("Unfavorited");
   };
 
   return (
@@ -47,6 +50,7 @@ function Favorites() {
           ))
         )}
       </div>
+      <ToastContainer />
     </div>
   );
 }
