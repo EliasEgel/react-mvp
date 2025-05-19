@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { usePokemon } from "../hooks/usePokemon";
 import StatBar from "../components/StatBar";
 
@@ -11,6 +11,7 @@ function RouteComponent() {
   const { pokemon } = Route.useParams();
   const { data, isPending, error } = usePokemon(pokemon);
   const [isFavorite, setIsFavorite] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const saved = JSON.parse(localStorage.getItem("savedPokemon") || "[]");
@@ -70,6 +71,22 @@ function RouteComponent() {
             className="mt-4 bg-[#c85250] text-white px-4 py-2 rounded hover:bg-[#a5443e] transition"
           >
             {isFavorite ? "Unfavorite" : "Favorite"}
+          </button>
+        </div>
+        <div className="flex justify-center gap-4 mt-4">
+          {data.id > 1 && (
+            <button
+              onClick={() => navigate({ to: `/${data.id - 1}` })}
+              className="mt-4 bg-[#c85250] text-white px-4 py-2 rounded hover:bg-[#a5443e] transition"
+            >
+              Previous
+            </button>
+          )}
+          <button
+            onClick={() => navigate({ to: `/${data.id + 1}` })}
+            className="mt-4 bg-[#c85250] text-white px-4 py-2 rounded hover:bg-[#a5443e] transition"
+          >
+            Next
           </button>
         </div>
 
