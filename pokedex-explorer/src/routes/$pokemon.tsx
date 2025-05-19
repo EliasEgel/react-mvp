@@ -47,7 +47,7 @@ function RouteComponent() {
       </h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 m-20">
-        <div>
+        <div className="flex justify-center items-center">
           <img
             src={data.sprites.front_default}
             alt={data.name}
