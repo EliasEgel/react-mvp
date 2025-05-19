@@ -13,6 +13,7 @@ function Navigation() {
             PokeDex
           </Link>
         </div>
+        
 
         {/* Right: Hamburger for mobile */}
         <div className="flex-none lg:hidden">

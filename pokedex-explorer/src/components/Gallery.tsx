@@ -16,6 +16,9 @@ function Gallery() {
   if (error) return "An error has occurred: " + error.message;
   return (
     <>
+      <div className="text-center text-2xl">
+        Search up your Favorite Pokémon or choose one of the first 151 below
+      </div>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 m-20">
         {data.results.map((pokemon: { name: string }) => (
           <PokemonCard key={pokemon.name} name={pokemon.name} />
