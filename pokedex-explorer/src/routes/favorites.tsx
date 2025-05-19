@@ -24,7 +24,7 @@ function Favorites() {
   };
 
   return (
-    <div className="flex flex-col items-center gap-4 px-4 py-8 text-center bg-[#f1d5ce]">
+    <div className="flex flex-col items-center gap-4 px-4 py-8 text-center bg-[#f1d5ce] min-h-screen">
       <h1 className="capitalize text-3xl font-bold text-[#c85250]">
         Your Favorites
       </h1>
