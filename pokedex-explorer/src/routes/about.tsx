@@ -21,7 +21,7 @@ function About() {
   return (
     <div className="flex flex-col items-center gap-4 px-4 py-8 text-center bg-[#f1d5ce] min-h-screen">
       <h1 className="capitalize text-3xl font-bold text-[#c85250]">
-        About Pokédex
+        About Pokédex Explorer
       </h1>
 
       <div className="grid grid-cols-1 w-xl  text-left">
