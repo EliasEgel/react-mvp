@@ -64,7 +64,7 @@ function RouteComponent() {
             ))}
           </div>
           <div className="text-black">Pokedex Entry: {data.id}</div>
-          <div className="text-black">Weight: {data.weight / 100} kg</div>
+          <div className="text-black">Weight: {data.weight / 10} kg</div>
           <div className="text-black">Height: {data.height / 10} m</div>
 
           <button
