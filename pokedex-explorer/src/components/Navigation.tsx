@@ -10,7 +10,7 @@ function Navigation() {
             to="/"
             className="btn btn-ghost text-xl text-white hover:bg-[#c85250]"
           >
-            PokeDex
+            PokéDex
           </Link>
         </div>
         
