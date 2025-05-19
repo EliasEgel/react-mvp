@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { usePokemon } from "../hooks/usePokemon";
 import StatBar from "../components/StatBar";
@@ -9,23 +10,32 @@ export const Route = createFileRoute("/$pokemon")({
 function RouteComponent() {
   const { pokemon } = Route.useParams();
   const { data, isPending, error } = usePokemon(pokemon);
+  const [isFavorite, setIsFavorite] = useState(false);
 
-  if (isPending) return <p>Loading...</p>;
-  if (error) return <p>Error: {(error as Error).message}</p>;
+  useEffect(() => {
+    const saved = JSON.parse(localStorage.getItem("savedPokemon") || "[]");
+    setIsFavorite(saved.includes(pokemon));
+  }, [pokemon]);
+
   const handleSave = () => {
     const saved = JSON.parse(localStorage.getItem("savedPokemon") || "[]");
-    if (!saved.includes(data.name)) {
-      const updated = [...saved, data.name];
+
+    if (isFavorite) {
+      const updated = saved.filter((name: string) => name !== pokemon);
       localStorage.setItem("savedPokemon", JSON.stringify(updated));
-      alert(`${data.name} saved!`);
+      setIsFavorite(false);
     } else {
-      alert(`${data.name} is already saved.`);
+      const updated = [...saved, pokemon];
+      localStorage.setItem("savedPokemon", JSON.stringify(updated));
+      setIsFavorite(true);
     }
   };
 
+  if (isPending) return <p>Loading...</p>;
+  if (error) return <p>Error: {(error as Error).message}</p>;
+
   return (
     <div className="flex flex-col items-center gap-4 px-4 py-8 text-center bg-[#f1d5ce]">
-      {/* Name */}
       <h1 className="capitalize text-3xl font-bold text-[#c85250]">
         {data.name}
       </h1>
@@ -49,16 +59,17 @@ function RouteComponent() {
               >
                 {typeInfo.type.name}
               </span>
-            ))}{" "}
+            ))}
           </div>
           <div className="text-black">Pokedex Entry: {data.id}</div>
           <div className="text-black">Weight: {data.weight / 100} kg</div>
-          <div className="text-black">Weight: {data.height / 10} m</div>
+          <div className="text-black">Height: {data.height / 10} m</div>
+
           <button
             onClick={handleSave}
-            className="bg-[#c85250] text-white px-4 py-2 rounded hover:bg-[#a5443e] transition"
+            className="mt-4 bg-[#c85250] text-white px-4 py-2 rounded hover:bg-[#a5443e] transition"
           >
-            Favorite
+            {isFavorite ? "Unfavorite" : "Favorite"}
           </button>
         </div>
 
