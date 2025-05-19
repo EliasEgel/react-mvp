@@ -59,7 +59,7 @@ function Navigation() {
           <ul className="menu menu-horizontal px-1">
             <li className="hover:bg-[#c85250] rounded-lg">
               <Link to="/favorites">
-                <a>Favorites</a>
+                Favorites
               </Link>
             </li>
             <li className="hover:bg-[#c85250] rounded-lg">

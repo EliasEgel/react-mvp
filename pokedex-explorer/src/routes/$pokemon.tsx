@@ -14,9 +14,10 @@ function RouteComponent() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    if (!data?.name) return;
     const saved = JSON.parse(localStorage.getItem("savedPokemon") || "[]");
     setIsFavorite(saved.includes(data.name));
-  }, [data.name]);
+  }, [data?.name]);
 
   const handleSave = () => {
     const saved = JSON.parse(localStorage.getItem("savedPokemon") || "[]");
