@@ -50,6 +50,22 @@ function RouteComponent() {
       <h1 className="capitalize text-3xl font-bold text-[#c85250]">
         {data.name}
       </h1>
+      <div className="flex justify-center gap-4 mt-4">
+        {data.id > 1 && (
+          <button
+            onClick={() => navigate({ to: `/${data.id - 1}` })}
+            className="mt-4 bg-[#c85250] text-white px-4 py-2 rounded hover:bg-[#a5443e] transition"
+          >
+            Previous
+          </button>
+        )}
+        <button
+          onClick={() => navigate({ to: `/${data.id + 1}` })}
+          className="mt-4 bg-[#c85250] text-white px-4 py-2 rounded hover:bg-[#a5443e] transition"
+        >
+          Next
+        </button>
+      </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 m-20">
         <div className="flex justify-center items-center">
@@ -83,24 +99,8 @@ function RouteComponent() {
             {isFavorite ? "Unfavorite" : "Favorite"}
           </button>
         </div>
-        <div className="flex justify-center gap-4 mt-4">
-          {data.id > 1 && (
-            <button
-              onClick={() => navigate({ to: `/${data.id - 1}` })}
-              className="mt-4 bg-[#c85250] text-white px-4 py-2 rounded hover:bg-[#a5443e] transition"
-            >
-              Previous
-            </button>
-          )}
-          <button
-            onClick={() => navigate({ to: `/${data.id + 1}` })}
-            className="mt-4 bg-[#c85250] text-white px-4 py-2 rounded hover:bg-[#a5443e] transition"
-          >
-            Next
-          </button>
-        </div>
 
-        <div className="w-full md:col-span-2 mt-6 px-4">
+        <div className="w-full mt-6 px-4">
           <h2 className="text-xl font-semibold mb-4 text-[#c85250]">Stats</h2>
           {data.stats.map((s: any) => (
             <StatBar
@@ -110,18 +110,16 @@ function RouteComponent() {
             />
           ))}
         </div>
-      </div>
-      <div className="mt-8 px-4">
-        <h2 className="text-xl font-bold text-[#c85250] mb-4">
-          Evolution Chain
-        </h2>
         <div className="mt-8 px-4">
           <h2 className="text-xl font-bold text-[#c85250] mb-4">
             Evolution Chain
           </h2>
-          <EvolutionChainDisplay pokemonId={data.id} />
+          <div className="mt-8 px-4">
+            <EvolutionChainDisplay pokemonId={data.id} />
+          </div>
         </div>
       </div>
+
       <ToastContainer />
     </div>
   );
