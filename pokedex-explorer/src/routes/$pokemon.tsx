@@ -112,7 +112,7 @@ function RouteComponent() {
         </div>
         <div className="mt-8 px-4">
           <h2 className="text-xl font-bold text-[#c85250] mb-4">
-            Evolution Chain
+            Evolution Chain:
           </h2>
           <div className="mt-8 px-4">
             <EvolutionChainDisplay pokemonId={data.id} />
