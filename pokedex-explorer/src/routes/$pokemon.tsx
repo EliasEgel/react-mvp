@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { usePokemon } from "../hooks/usePokemon";
 import StatBar from "../components/StatBar";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const Route = createFileRoute("/$pokemon")({
   component: RouteComponent,
@@ -30,10 +32,13 @@ function RouteComponent() {
       const updated = saved.filter((name: string) => name !== data.name);
       localStorage.setItem("savedPokemon", JSON.stringify(updated));
       setIsFavorite(false);
+      toast.success("Unfavorited ", data.name);
+
     } else {
       const updated = [...saved, data.name];
       localStorage.setItem("savedPokemon", JSON.stringify(updated));
       setIsFavorite(true);
+      toast.success("Favorited ", data.name);
     }
   };
 
@@ -106,6 +111,7 @@ function RouteComponent() {
           ))}
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 }
