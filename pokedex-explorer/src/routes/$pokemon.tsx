@@ -5,7 +5,6 @@ import StatBar from "../components/StatBar";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import EvolutionChainDisplay from "../components/EvolutionChainDisplay";
-import { useEvolutionChain } from "../hooks/useEvolutionChain";
 
 export const Route = createFileRoute("/$pokemon")({
   component: RouteComponent,
@@ -16,11 +15,6 @@ function RouteComponent() {
   const { data, isPending, error } = usePokemon(pokemon);
   const [isFavorite, setIsFavorite] = useState(false);
   const navigate = useNavigate();
-  const {
-    data: evolutionChain,
-    isPending: isEvolutionLoading,
-    error: evolutionError,
-  } = useEvolutionChain(data?.id ?? undefined);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -125,12 +119,7 @@ function RouteComponent() {
           <h2 className="text-xl font-bold text-[#c85250] mb-4">
             Evolution Chain
           </h2>
-
-          {isEvolutionLoading && <p>Loading evolution chain...</p>}
-          {evolutionError && (
-            <p className="text-red-500">Error loading evolution chain.</p>
-          )}
-          {evolutionChain && <EvolutionChainDisplay chain={evolutionChain} />}
+          <EvolutionChainDisplay pokemonId={data.id} />
         </div>
       </div>
       <ToastContainer />

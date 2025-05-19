@@ -1,5 +1,20 @@
-function EvolutionChainDisplay({ chain }: { chain: any }) {
-  if (!chain || !chain.species) return null;
+import { useEvolutionChain } from "../hooks/useEvolutionChain";
+
+function EvolutionChainDisplay({ pokemonId }: { pokemonId: number }) {
+  const {
+    data: chain,
+    isPending,
+    error,
+  } = useEvolutionChain(pokemonId);
+
+  if (isPending) return <p>Loading evolution chain...</p>;
+  if (error || !chain) return <p className="text-red-500">Error loading evolution chain.</p>;
+
+  return <EvolutionBranch chain={chain} />;
+}
+
+function EvolutionBranch({ chain }: { chain: any }) {
+  if (!chain?.species) return null;
 
   return (
     <div className="ml-4 border-l-2 border-[#c85250] pl-4">
@@ -12,7 +27,7 @@ function EvolutionChainDisplay({ chain }: { chain: any }) {
           {chain.evolves_to.map((evo: any) => (
             <div key={evo.species.name} className="flex flex-col">
               <span className="text-sm text-gray-600">evolves to:</span>
-              <EvolutionChainDisplay chain={evo} />
+              <EvolutionBranch chain={evo} />
             </div>
           ))}
         </div>
