@@ -17,7 +17,7 @@ function Gallery() {
   return (
     <>
       <div className="text-center text-2xl text-[#c85250]">
-        Search up your Favorite Pokémon or choose one of the first 151 below
+        Search up your Favorite Pokémon or choose one of the first 151 below:
       </div>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-4 m-20">
         {data.results.map((pokemon: { name: string }) => (
