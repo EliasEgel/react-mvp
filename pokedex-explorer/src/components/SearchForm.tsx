@@ -1,10 +1,12 @@
-import { useState } from 'react';
-import { useNavigate } from '@tanstack/react-router';
-import { usePokemon } from '../hooks/usePokemon';
+import { useEffect, useState } from "react";
+import { useNavigate } from "@tanstack/react-router";
+import { usePokemon } from "../hooks/usePokemon";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const SearchForm = () => {
-  const [input, setInput] = useState('');
-  const [submittedName, setSubmittedName] = useState('');
+  const [input, setInput] = useState("");
+  const [submittedName, setSubmittedName] = useState("");
   const navigate = useNavigate();
 
   const { data, isPending, error } = usePokemon(submittedName);
@@ -16,11 +18,19 @@ const SearchForm = () => {
 
   // Navigate to the Pokémon page when valid data is fetched
   if (data && submittedName) {
-    navigate({ to: '/$pokemon', params: { pokemon: submittedName } });
+    navigate({ to: "/$pokemon", params: { pokemon: submittedName } });
   }
+  useEffect(() => {
+    if (error && submittedName) {
+      toast.error("Pokémon not found. Try another name.");
+    }
+  }, [error, submittedName]);
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col items-center gap-4 p-6">
+    <form
+      onSubmit={handleSubmit}
+      className="flex flex-col items-center gap-4 p-6"
+    >
       <input
         type="text"
         placeholder="Search Pokémon"
@@ -35,10 +45,10 @@ const SearchForm = () => {
         Search
       </button>
 
-      {isPending && submittedName && <p className="text-sm text-gray-600">Searching...</p>}
-      {error && submittedName && (
-        <p className="text-sm text-red-500">Pokémon not found. Try another name.</p>
+      {isPending && submittedName && (
+        <p className="text-sm text-gray-600">Searching...</p>
       )}
+      <ToastContainer />
     </form>
   );
 };
