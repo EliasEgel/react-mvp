@@ -12,6 +12,7 @@
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as FavoritesImport } from './routes/favorites'
+import { Route as AboutImport } from './routes/about'
 import { Route as PokemonImport } from './routes/$pokemon'
 import { Route as IndexImport } from './routes/index'
 
@@ -20,6 +21,12 @@ import { Route as IndexImport } from './routes/index'
 const FavoritesRoute = FavoritesImport.update({
   id: '/favorites',
   path: '/favorites',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const AboutRoute = AboutImport.update({
+  id: '/about',
+  path: '/about',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -53,6 +60,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PokemonImport
       parentRoute: typeof rootRoute
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutImport
+      parentRoute: typeof rootRoute
+    }
     '/favorites': {
       id: '/favorites'
       path: '/favorites'
@@ -68,12 +82,14 @@ declare module '@tanstack/react-router' {
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/$pokemon': typeof PokemonRoute
+  '/about': typeof AboutRoute
   '/favorites': typeof FavoritesRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/$pokemon': typeof PokemonRoute
+  '/about': typeof AboutRoute
   '/favorites': typeof FavoritesRoute
 }
 
@@ -81,27 +97,30 @@ export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
   '/$pokemon': typeof PokemonRoute
+  '/about': typeof AboutRoute
   '/favorites': typeof FavoritesRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/$pokemon' | '/favorites'
+  fullPaths: '/' | '/$pokemon' | '/about' | '/favorites'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/$pokemon' | '/favorites'
-  id: '__root__' | '/' | '/$pokemon' | '/favorites'
+  to: '/' | '/$pokemon' | '/about' | '/favorites'
+  id: '__root__' | '/' | '/$pokemon' | '/about' | '/favorites'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   PokemonRoute: typeof PokemonRoute
+  AboutRoute: typeof AboutRoute
   FavoritesRoute: typeof FavoritesRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   PokemonRoute: PokemonRoute,
+  AboutRoute: AboutRoute,
   FavoritesRoute: FavoritesRoute,
 }
 
@@ -117,6 +136,7 @@ export const routeTree = rootRoute
       "children": [
         "/",
         "/$pokemon",
+        "/about",
         "/favorites"
       ]
     },
@@ -125,6 +145,9 @@ export const routeTree = rootRoute
     },
     "/$pokemon": {
       "filePath": "$pokemon.tsx"
+    },
+    "/about": {
+      "filePath": "about.tsx"
     },
     "/favorites": {
       "filePath": "favorites.tsx"

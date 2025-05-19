@@ -13,7 +13,6 @@ function Navigation() {
             PokéDex
           </Link>
         </div>
-        
 
         {/* Right: Hamburger for mobile */}
         <div className="flex-none lg:hidden">
@@ -45,7 +44,7 @@ function Navigation() {
                 <Link to="/favorites">Favorites</Link>
               </li>
               <li>
-                <a>About</a>
+                <Link to="/about">About</Link>
               </li>
               <li>
                 <a href="https://github.com/EliasEgel/react-mvp">Github</a>
@@ -58,12 +57,10 @@ function Navigation() {
         <div className="hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
             <li className="hover:bg-[#c85250] rounded-lg">
-              <Link to="/favorites">
-                Favorites
-              </Link>
+              <Link to="/favorites">Favorites</Link>
             </li>
             <li className="hover:bg-[#c85250] rounded-lg">
-              <a>About</a>
+              <Link to="/about">About</Link>
             </li>
 
             <li className="hover:bg-[#c85250] rounded-lg">
