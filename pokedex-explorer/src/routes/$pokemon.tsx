@@ -15,18 +15,18 @@ function RouteComponent() {
 
   useEffect(() => {
     const saved = JSON.parse(localStorage.getItem("savedPokemon") || "[]");
-    setIsFavorite(saved.includes(pokemon));
-  }, [pokemon]);
+    setIsFavorite(saved.includes(data.name));
+  }, [data.name]);
 
   const handleSave = () => {
     const saved = JSON.parse(localStorage.getItem("savedPokemon") || "[]");
 
     if (isFavorite) {
-      const updated = saved.filter((name: string) => name !== pokemon);
+      const updated = saved.filter((name: string) => name !== data.name);
       localStorage.setItem("savedPokemon", JSON.stringify(updated));
       setIsFavorite(false);
     } else {
-      const updated = [...saved, pokemon];
+      const updated = [...saved, data.name];
       localStorage.setItem("savedPokemon", JSON.stringify(updated));
       setIsFavorite(true);
     }
