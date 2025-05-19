@@ -24,7 +24,7 @@ function About() {
         About Pokédex
       </h1>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 m-20 text-left">
+      <div className="grid grid-cols-1 w-xl  text-left">
         <div className="bg-white p-6 rounded-lg shadow-md w-full text-[#c85250] text-lg font-medium">
           <p className="mb-2">
             <span className="font-bold">Description:</span> {data.description}
