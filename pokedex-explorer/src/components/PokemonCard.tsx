@@ -20,7 +20,7 @@ const PokemonCard = ({ name }: PokemonCardProps) => {
               <img
                 src={data.sprites.front_default}
                 alt={name}
-                className="w-20 h-20 object-contain mb-2"
+                className="w-max h-max object-contain mb-2"
               />
               <h2 className="text-lg font-semibold text-gray-800 capitalize">
                 {name}
